@@ -1,5 +1,4 @@
 # History of Enrollment
-* [S, AY YYYY-YYYY] - S=Sem (1, 2, or M); YYYY=year
-* [1, AY 1908-1909] - Enrolled CMSC 190 under MYAdviser
-* [2, AY 1908-1909] - Change of adviser from MYAdviser to NEWAdviser; Re-enrolled CMSC 190 under NEWAdviser
-* [M, AY 1909-1910] - Completed CMSC 190
+* [2, AY 2022-2023] - Enrolled CMSC 190-1 under MUAnacleto (S)
+* [1, AY 2023-2024] - Enrolled CMSC 190-2 under MUAnacleto (INC)
+* [2, AY 2023-2024] - Currently enrolled for residency to complete CMSC 190-2
