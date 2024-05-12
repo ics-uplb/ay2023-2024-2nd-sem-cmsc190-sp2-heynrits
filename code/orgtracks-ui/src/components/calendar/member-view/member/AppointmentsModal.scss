@@ -1,0 +1,48 @@
+.rbc-calendar {
+    .rbc-time-slot {
+        .rbc-label {
+            font-size: 12px;
+        }
+    }
+
+    .rbc-slot-selection {
+        background-color: hsla(207, 0%, 54%, 0.5);
+        border: 2px dashed hsla(207, 0%, 40%, 1);
+        border-radius: 5px;
+        color: white;
+    }
+
+    .rbc-event, .rbc-day-slot .rbc-background-event {
+        @apply bg-primary border-primary text-white;
+}
+    
+    .rbc-row.rbc-time-header-cell {
+        min-height: 40px;
+    }
+
+    .rbc-time-gutter, .rbc-time-header-gutter {
+        min-width: 70px !important;
+        max-width: 70px !important;
+        width: 70px !important;
+    }
+
+    .rbc-header {
+        // padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .rbc-button-link {
+            padding: 4px 8px;
+        }
+        
+        &.rbc-today {
+            background-color: white;
+
+            .rbc-button-link {
+                border-radius: 2px;
+                @apply bg-primary text-white;
+            }
+        }
+    }
+}
