@@ -1,19 +1,8 @@
 # Development Set-up
-## Prerequisites
-* interpreter
-* package manager 1
-* test files (file1, file2)
-* Android phone
-* IDE used, etc
-## Instructions
-1. Install `interpeter` from link
-2. Run the following command to install other packages:
-```
-interpreter install package_manager
-package_manager -i packages
-```
-3. Run the following command to use the program:
-```
-myprogram file1 file2
-```
-4. A binary file can also be downloaded from this link which can be used by any device.
+
+This system contains three codebases that make up the components of the project:
+1. `orgtracks-api` - main HTTP and SocketIO server
+2. `orgtracks-ui` - client-side web application
+3. `osam-mock-server` - mock server for receiving data from OrgTracks server
+
+Please see `README.md` inside each directory on detailed instructions on how to setup each project.
