@@ -74,7 +74,7 @@ app.post(
       }
 
       const newMembers = new NewMembers({
-        organization,
+        organization: organizationId,
         users,
       });
 
