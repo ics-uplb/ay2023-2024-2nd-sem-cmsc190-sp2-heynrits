@@ -23,6 +23,8 @@ import IntervieweesProgressTable from "./IntervieweesProgressTable";
 import AppointmentsModal from "@/components/calendar/member-view/member/AppointmentsModal";
 import ViewApplicantModal from "./ViewApplicantModal";
 import AllApplicantsProgressTable from "./AllApplicantsProgressTable";
+import ConfirmationDialog from "@/components/ConfirmationDialog";
+import AlertDialog from "@/components/AlertDialog";
 
 export default function OrganizationPage() {
   const { showMessage } = useContext(SystemFeedbackContext);
@@ -49,9 +51,11 @@ export default function OrganizationPage() {
     total: null,
   });
 
+  const [evaluationAlertModalOpen, setEvaluationAlertModalOpen] = useState(false);
   const [hasEvaluated, setHasEvaluated] = useState(false);
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [evaluationStatus, setEvaluationStatus] = useState([]);
+  const [submitModalOpen, setSubmitModalOpen] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
 
   useEffect(() => {
@@ -184,7 +188,7 @@ export default function OrganizationPage() {
   const evaluateApplicants = async () => {
     for (let i = 0; i < evaluationStatus.length; i++) {
       if (evaluationStatus[i].status === null) {
-        alert("Please evaluate all applicants");
+        setEvaluationAlertModalOpen(true);
         return;
       }
     }
@@ -437,15 +441,7 @@ export default function OrganizationPage() {
                               applicationEvaluation.data.transmissionDate) ||
                             submitLoading
                           }
-                          onClick={() => {
-                            const confirmed = confirm(
-                              "Are you sure? This will finalize the application process and submit the info of accepted applicants to OSAM."
-                            );
-
-                            if (confirmed) {
-                              submitToOSAM(selectedBatch);
-                            }
-                          }}
+                          onClick={() => setSubmitModalOpen(true)}
                         >
                           <BiUpload size="1.25em" /> Submit
                           {applicationEvaluation.data &&
@@ -550,6 +546,23 @@ export default function OrganizationPage() {
                 setOpen={setSelectedInterviewAssignment}
                 interviewAssignment={selectedInterviewAssignment}
                 actionHandler={memberCalendarEventActionHandler}
+              />
+              <ConfirmationDialog
+                title="Submit to OSAM System"
+                message={`This will finalize the application process for this batch and submit the info of accepted applicants to OSAM System.`}
+                open={submitModalOpen}
+                setOpen={setSubmitModalOpen}
+                onConfirm={() => {
+                  submitToOSAM();
+                  setSubmitModalOpen(false);
+                }}
+                onCancel={() => setSubmitModalOpen(false)}
+              />
+              <AlertDialog
+                title="Applicant Evaluation"
+                message="Please evaluate all applicants before confirming."
+                open={evaluationAlertModalOpen}
+                setOpen={setEvaluationAlertModalOpen}
               />
             </>
           )}
